@@ -1,0 +1,20 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+pyfrc = "*"
+robotpy-rev = "*"
+robotpy-rev-color = "*"
+robotpy-installer = "*"
+robotpy-hal = "*"
+robotpy-halsim-gui = "*"
+robotpy-wpiutil = "*"
+robotpy-wpilib-utilities = "*"
+robotpy-ctre = "*"
+
+[requires]
+python_version = "3.8"
