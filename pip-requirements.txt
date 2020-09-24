@@ -1,0 +1,6 @@
+robotpy-installer
+pyfrc
+adafruit-circuitpython-servokit
+robotpy-ctre
+robotpy-rev
+robotpy-rev-color
