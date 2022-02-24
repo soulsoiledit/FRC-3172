@@ -9,6 +9,9 @@ kDriveBackRightPort = 3
 kGrabberPort = 4
 kShooterPort = 5
 
+kPullerPort0 = 6
+kPullerPort1 = 7
+
 kXboxControllerPort = 0
 
 kLeftEncoderPorts = (0, 1)
