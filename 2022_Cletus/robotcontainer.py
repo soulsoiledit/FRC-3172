@@ -14,6 +14,7 @@ from commands.reduceddrive import ReducedDrive
 from commands.shoot import MediumShoot
 from commands.nuke_em import NukeEm
 from commands.grab import Grab
+from commands.pullup import Pullup
 
 
 class RobotContainer:
@@ -26,6 +27,7 @@ class RobotContainer:
         self.drive = DriveSubsystem()
         self.shooter = ShooterSubsystem()
         self.grabber = GrabberSubsystem()
+        self.puller = PullerSubsystem()
 
         self.configureButtonBindings()
 
@@ -53,6 +55,14 @@ class RobotContainer:
 
         commands2.button.JoystickButton(self.xboxController, 3).whenPressed(
             Grab(self.grabber)
+        )
+
+        commands2.button.JoystickButton(self.xboxController, 3).whenPressed(
+            Grab(self.grabber)
+        )
+
+        commands2.button.JoystickButton(self.xboxController, 4).whenPressed(
+            Pullup(self.puller)
         )
 
     def getAutonomousCommand(self) -> commands2.Command:

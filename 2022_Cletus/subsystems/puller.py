@@ -3,6 +3,7 @@ import constants
 
 import wpilib
 
+
 class PullerSubsystem(commands2.SubsystemBase):
     def __init__(self) -> None:
         super().__init__()
