@@ -20,14 +20,7 @@ class DriveSubsystem(commands2.SubsystemBase):
         self.drive = wpilib.drive.DifferentialDrive(self.left_drive, self.right_drive)
 
     def curvatureDrive(self, fwd: float, rot: float) -> None:
-        """
-        :param fwd: the forward movement command
-        :param rot: the rotation command
-        """
-        self.drive.curvatureDrive(fwd, rot, allowTurnInPlace=True)
+        self.drive.arcadeDrive(fwd, rot)
 
     def setMaxOutput(self, maxOutput: float):
-        """
-        :param maxOutput: maximum output of the drivetrain
-        """
         self.drive.setMaxOutput(maxOutput)

@@ -1,5 +1,5 @@
 import commands2
-from subsystems.grabber import  GrabberSubsystem
+from subsystems.grabber import GrabberSubsystem
 
 
 class Grab(commands2.CommandBase):

@@ -2,7 +2,7 @@ import commands2
 from subsystems.puller import PullerSubsystem
 
 
-class Pullup(commands2.CommandBase):
+class Pull(commands2.CommandBase):
     def __init__(self, puller: PullerSubsystem) -> None:
         super().__init__()
         self.puller = puller

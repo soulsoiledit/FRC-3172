@@ -1,9 +1,9 @@
 import commands2
-from subsystems.extender import ExtendSubsystem
+from subsystems.extender import ExtenderSubsystem
 
 
 class Extend(commands2.CommandBase):
-    def __init__(self, extend: ExtendSubsystem) -> None:
+    def __init__(self, extend: ExtenderSubsystem) -> None:
         super().__init__()
         self.extend = extend
         self.addRequirements(extend)

@@ -1,14 +1,3 @@
-#
-# See the documentation for more details on how this works
-#
-# The idea here is you provide a simulation object that overrides specific
-# pieces of WPILib, and modifies motors/sensors accordingly depending on the
-# state of the simulation. An example of this would be measuring a motor
-# moving for a set period of time, and then changing a limit switch to turn
-# on after that period of time. This can help you do more complex simulations
-# of your robot code without too much extra effort.
-#
-
 import wpilib
 import wpilib.simulation
 from wpimath.system import LinearSystemId
@@ -18,6 +7,11 @@ import constants
 
 from pyfrc.physics.core import PhysicsInterface
 
+import typing
+
+if typing.TYPE_CHECKING:
+    from robot import Cletus
+
 
 class PhysicsEngine:
     """
@@ -26,33 +20,28 @@ class PhysicsEngine:
     realistic, but it's good enough to illustrate the point
     """
 
-    def __init__(self, physics_controller: PhysicsInterface):
+    def __init__(self, physics_controller: PhysicsInterface, robot: "Cletus"):
 
         self.physics_controller = physics_controller
 
         # Motors
-        self.l_motor = wpilib.simulation.PWMSim(1)
-        self.r_motor = wpilib.simulation.PWMSim(2)
+        self.l_motor = wpilib.simulation.PWMSim(
+            robot.container.drive.front_left.getChannel()
+        )
+        self.r_motor = wpilib.simulation.PWMSim(
+            robot.container.drive.front_right.getChannel()
+        )
 
         self.system = LinearSystemId.identifyDrivetrainSystem(1.98, 0.2, 1.5, 0.3)
         self.drivesim = wpilib.simulation.DifferentialDrivetrainSim(
             self.system,
-            constants.kTrackWidth,
-            DCMotor.CIM(constants.kDriveTrainMotorCount),
-            constants.kGearingRatio,
-            constants.kWheelRadius,
+            0.381 * 2,
+            DCMotor.CIM(2),
+            10,
+            0.0508,
         )
 
     def update_sim(self, now: float, tm_diff: float) -> None:
-        """
-        Called when the simulation parameters for the program need to be
-        updated.
-
-        :param now: The current time as a float
-        :param tm_diff: The amount of time that has passed since the last
-                        time that this function was called
-        """
-
         # Simulate the drivetrain
         l_motor = self.l_motor.getSpeed()
         r_motor = self.r_motor.getSpeed()

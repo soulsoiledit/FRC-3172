@@ -1,8 +1,7 @@
 import commands2
 import constants
-
-import wpilib
 import rev
+import wpilib
 
 
 class PullerSubsystem(commands2.SubsystemBase):

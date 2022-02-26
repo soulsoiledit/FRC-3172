@@ -10,7 +10,7 @@ class ShooterSubsystem(commands2.SubsystemBase):
 
         self.shooterMotor0 = wpilib.Talon(constants.kShooterPort0)
         self.shooterMotor1 = wpilib.Talon(constants.kShooterPort1)
-        self.shooterMotor1.setInverted()
+        self.shooterMotor1.setInverted(True)
 
         self.shooterMotors = wpilib.MotorControllerGroup(self.shooterMotor0, self.shooterMotor1)
 

@@ -1,27 +1,25 @@
-import constants
 import wpilib
-
 import commands2
 import commands2.button
+import constants
 
 from subsystems.drive import DriveSubsystem
-from subsystems.shooter import ShooterSubsystem
 from subsystems.grabber import GrabberSubsystem
+from subsystems.shooter import ShooterSubsystem
 from subsystems.extender import ExtenderSubsystem
 from subsystems.puller import PullerSubsystem
 
 from commands.manualdrive import ManualDrive
 from commands.reduceddrive import ReducedDrive
+from commands.grab import Grab
 from commands.shoot import MediumShoot
 from commands.nuke_em import NukeEm
-from commands.grab import Grab
 from commands.extend import Extend
-from commands.pullup import Pullup
+from commands.pull import Pull
 
 
 class RobotContainer:
     def __init__(self) -> None:
-
         # The driver's controller
         self.xboxController = wpilib.XboxController(constants.kXboxControllerPort)
 
@@ -44,7 +42,7 @@ class RobotContainer:
         )
 
     def configureButtonBindings(self):
-        commands2.button.JoystickButton(self.xboxController, 5).whenHeld(
+        commands2.button.JoystickButton(self.xboxController, 9).whenHeld(
             ReducedDrive(self.drive)
         )
 
@@ -69,7 +67,7 @@ class RobotContainer:
         )
 
         commands2.button.JoystickButton(self.xboxController, 6).whenHeld(
-            Pullup(self.puller)
+            Pull(self.puller)
         )
 
     def getAutonomousCommand(self) -> commands2.Command:
