@@ -8,7 +8,7 @@ class GrabberSubsystem(commands2.SubsystemBase):
     def __init__(self) -> None:
         super().__init__()
 
-        self.grabberMotor = wpilib.PWMSparkMax(constants.kGrabberPort)
+        self.grabberMotor = wpilib.Talon(constants.kGrabberPort)
 
     def grab(self) -> None:
         self.grabberMotor.set(0.5)
