@@ -20,6 +20,8 @@ class DriveSubsystem(commands2.SubsystemBase):
         self.drive = wpilib.drive.DifferentialDrive(self.left_drive, self.right_drive)
 
     def curvatureDrive(self, fwd: float, rot: float) -> None:
+        if abs(fwd) < 0.1:
+            fwd = 0
         self.drive.arcadeDrive(fwd, rot)
 
     def setMaxOutput(self, maxOutput: float):
