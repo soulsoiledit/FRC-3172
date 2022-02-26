@@ -1,5 +1,3 @@
-import wpilib
-
 # Motors
 kDriveFrontLeftPort = 0
 kDriveFrontRightPort = 2
@@ -9,8 +7,11 @@ kDriveBackRightPort = 3
 kGrabberPort = 4
 kShooterPort = 5
 
-kPullerPort0 = 6
-kPullerPort1 = 7
+kExtendPort0 = 6
+kExtendPort1 = 7
+
+kPullerID0 = 0
+kPullerID1 = 1
 
 kXboxControllerPort = 0
 
