@@ -14,7 +14,7 @@ from commands.reduceddrive import ReducedDrive
 from commands.grab import Grab
 from commands.shoot import MediumShoot
 from commands.nuke_em import NukeEm
-from commands.extend import Extend
+from commands.reach import Reach
 from commands.pull import Pull
 
 
@@ -63,11 +63,11 @@ class RobotContainer:
         )
 
         commands2.button.JoystickButton(self.xboxController, 5).whenHeld(
-            Extend(self.extender)
+            Reach(self.extender, self.puller)
         )
 
         commands2.button.JoystickButton(self.xboxController, 6).whenHeld(
-            Pull(self.puller)
+            Pull(self.extender, self.puller)
         )
 
     def getAutonomousCommand(self) -> commands2.Command:

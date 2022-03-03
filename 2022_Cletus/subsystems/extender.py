@@ -16,5 +16,8 @@ class ExtenderSubsystem(commands2.SubsystemBase):
     def extend(self) -> None:
         self.extendMotors.set(0.9)
 
+    def contract(self) -> None:
+        self.extendMotors.set(-0.9)
+
     def stop(self) -> None:
         self.extendMotors.set(0)

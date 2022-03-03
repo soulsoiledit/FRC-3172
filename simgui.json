@@ -14,6 +14,15 @@
       "/FMSInfo": "FMSInfo",
       "/LiveWindow/Ungrouped/DifferentialDrive[1]": "DifferentialDrive",
       "/LiveWindow/Ungrouped/Scheduler": "Scheduler",
+      "/LiveWindow/Ungrouped/Spark[0]": "Motor Controller",
+      "/LiveWindow/Ungrouped/Spark[1]": "Motor Controller",
+      "/LiveWindow/Ungrouped/Spark[2]": "Motor Controller",
+      "/LiveWindow/Ungrouped/Spark[3]": "Motor Controller",
+      "/LiveWindow/Ungrouped/Talon[4]": "Motor Controller",
+      "/LiveWindow/Ungrouped/Talon[5]": "Motor Controller",
+      "/LiveWindow/Ungrouped/Talon[6]": "Motor Controller",
+      "/LiveWindow/Ungrouped/Talon[7]": "Motor Controller",
+      "/LiveWindow/Ungrouped/Talon[8]": "Motor Controller",
       "/LiveWindow/Ungrouped/class frc2::SubsystemBase": "Subsystem",
       "/SmartDashboard/Field": "Field2d"
     }
