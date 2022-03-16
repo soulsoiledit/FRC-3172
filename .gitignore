@@ -24,3 +24,6 @@ simgui.json
 2022_Cletus/__pycache__/robotcontainer.cpython-310.pyc
 2022_Cletus/__pycache__/robotcontainer.cpython-310.pyc
 2022_Cletus/commands/__pycache__/pull.cpython-310.pyc
+2022_Cletus/subsystems/__pycache__/drive.cpython-310.pyc
+2022_Cletus/subsystems/__pycache__/extender.cpython-310.pyc
+2022_Cletus/subsystems/__pycache__/puller.cpython-310.pyc
