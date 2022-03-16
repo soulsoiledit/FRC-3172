@@ -13,7 +13,7 @@ class Pull(commands2.CommandBase):
 
     def initialize(self) -> None:
         self.extend.contract()
-        self.pull.pull()
+        # self.pull.pull()
 
     def end(self, interrupted: bool) -> None:
         self.extend.stop()
