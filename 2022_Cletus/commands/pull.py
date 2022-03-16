@@ -12,9 +12,9 @@ class Pull(commands2.CommandBase):
         self.addRequirements(pull)
 
     def initialize(self) -> None:
-        self.extend.contract()
-        # self.pull.pull()
+        #self.extend.contract()
+        self.pull.contract()
 
     def end(self, interrupted: bool) -> None:
-        self.extend.stop()
+        #self.extend.stop()
         self.pull.stop()

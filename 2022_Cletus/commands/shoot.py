@@ -1,4 +1,5 @@
 import commands2
+import constants
 from subsystems.shooter import ShooterSubsystem
 
 
@@ -9,7 +10,7 @@ class MediumShoot(commands2.CommandBase):
         self.addRequirements(shooter)
 
     def initialize(self) -> None:
-        self.shooter.shoot(-0.5)
+        self.shooter.shoot(-0.5*constants.shootPower)
 
     def end(self, interrupted: bool) -> None:
         self.shooter.stop()
@@ -21,7 +22,7 @@ class NukeEm(commands2.CommandBase):
         self.addRequirements(shooter)
 
     def initialize(self) -> None:
-        self.shooter.shoot(-1)
+        self.shooter.shoot(-1*constants.shootPower)
 
     def end(self, interrupted: bool) -> None:
         self.shooter.stop()

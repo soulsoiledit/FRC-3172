@@ -13,7 +13,7 @@ class Reach(commands2.CommandBase):
 
     def initialize(self) -> None:
         self.extend.extend()
-        # self.pull.unpull()
+        self.pull.extend()
 
     def end(self, interrupted: bool) -> None:
         self.extend.stop()

@@ -21,7 +21,6 @@ driveFwdPower = 1
 driveRotPower = 1
 shootPower = 0.5
 grabPower = 0.5
-extendPower = 0.75
-pullPower = extendPower*0.9
+pullPower = 0.85
 
 kXboxControllerPort = 0
