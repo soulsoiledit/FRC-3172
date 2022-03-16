@@ -13,7 +13,7 @@ from commands.manualdrive import ManualDrive
 from commands.reduceddrive import ReducedDrive
 from commands.grab import Grab
 from commands.shoot import MediumShoot
-from commands.nuke_em import NukeEm
+from commands.shoot import NukeEm
 from commands.reach import Reach
 from commands.pull import Pull
 
@@ -46,19 +46,15 @@ class RobotContainer:
             ReducedDrive(self.drive)
         )
 
-        commands2.button.JoystickButton(self.xboxController, 1).whenPressed(
+        commands2.button.JoystickButton(self.xboxController, 1).whenHeld(
             MediumShoot(self.shooter)
         )
 
-        commands2.button.JoystickButton(self.xboxController, 2).whenPressed(
+        commands2.button.JoystickButton(self.xboxController, 2).whenHeld(
             NukeEm(self.shooter)
         )
 
-        commands2.button.JoystickButton(self.xboxController, 3).whenPressed(
-            Grab(self.grabber)
-        )
-
-        commands2.button.JoystickButton(self.xboxController, 4).whenPressed(
+        commands2.button.JoystickButton(self.xboxController, 3).whenHeld(
             Grab(self.grabber)
         )
 
