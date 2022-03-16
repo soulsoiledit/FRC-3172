@@ -8,16 +8,16 @@ class ExtenderSubsystem(commands2.SubsystemBase):
     def __init__(self) -> None:
         super().__init__()
 
-        self.extendMotor0 = wpilib.Talon(constants.kExtendPort0)
-        self.extendMotor1 = wpilib.Talon(constants.kExtendPort1)
+        self.leftExtendMotor = wpilib.Spark(constants.kLeftExtendPort)
+        self.rightExtendMotor = wpilib.Spark(constants.kRightExtendPort)
 
-        self.extendMotors = wpilib.MotorControllerGroup(self.extendMotor0, self.extendMotor1)
+        self.extendMotors = wpilib.MotorControllerGroup(self.leftExtendMotor, self.rightExtendMotor)
 
     def extend(self) -> None:
-        self.extendMotors.set(0.9)
+        self.extendMotors.set(constants.extendPower)
 
     def contract(self) -> None:
-        self.extendMotors.set(-0.9)
+        self.extendMotors.set(-constants.extendPower)
 
     def stop(self) -> None:
         self.extendMotors.set(0)

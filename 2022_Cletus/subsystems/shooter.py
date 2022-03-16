@@ -1,5 +1,6 @@
 import commands2
 import constants
+import rev
 
 import wpilib
 
@@ -8,14 +9,14 @@ class ShooterSubsystem(commands2.SubsystemBase):
     def __init__(self) -> None:
         super().__init__()
 
-        self.shooterMotor0 = wpilib.Talon(constants.kShooterPort0)
-        self.shooterMotor1 = wpilib.Talon(constants.kShooterPort1)
-        self.shooterMotor1.setInverted(True)
+        self.leftShooterMotor = rev.CANSparkMax(constants.kLeftShooterPortID, rev.CANSparkMaxLowLevel.MotorType(0))
+        self.rightShooterMotor = rev.CANSparkMax(constants.kRightShooterPortID, rev.CANSparkMaxLowLevel.MotorType(0))
+        self.rightShooterMotor.setInverted(False)
 
-        self.shooterMotors = wpilib.MotorControllerGroup(self.shooterMotor0, self.shooterMotor1)
+        self.shooterMotors = wpilib.MotorControllerGroup(self.leftShooterMotor, self.rightShooterMotor)
 
     def shoot(self, force: float) -> None:
-        self.shooterMotors.set(force)
+        self.shooterMotors.set(force*constants.shootPower)
 
     def stop(self) -> None:
         self.shooterMotors.set(0)
