@@ -18,7 +18,7 @@ class PullerSubsystem(commands2.SubsystemBase):
         self.pullerMotors.set(constants.pullPower)
 
     def extend(self) -> None:
-        self.pullerMotors.set(-constants.pullPower*0.5)
+        self.pullerMotors.set(-constants.pullPower)
 
     def stop(self) -> None:
         self.pullerMotors.set(0)

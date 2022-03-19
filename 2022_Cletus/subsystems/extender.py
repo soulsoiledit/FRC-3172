@@ -13,11 +13,5 @@ class ExtenderSubsystem(commands2.SubsystemBase):
 
         self.extendMotors = wpilib.MotorControllerGroup(self.leftExtendMotor, self.rightExtendMotor)
 
-    def extend(self) -> None:
-        self.extendMotors.set(-constants.pullPower)
-
-    def contract(self) -> None:
-        self.extendMotors.set(constants.pullPower)
-
-    def stop(self) -> None:
-        self.extendMotors.set(0)
+    def move(self, leftSpeed: float, rightSpeed: float) -> None:
+        self.extendMotors.set((leftSpeed-rightSpeed))

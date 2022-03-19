@@ -14,8 +14,9 @@ from commands.reduceddrive import ReducedDrive
 from commands.grab import Grab
 from commands.shoot import MediumShoot
 from commands.shoot import NukeEm
-from commands.reach import Reach
-from commands.pull import Pull
+from commands.movearms import MoveArms
+from commands.movewheels import ForwardWheel
+from commands.movewheels import BackwardWheel
 
 
 class RobotContainer:
@@ -41,6 +42,14 @@ class RobotContainer:
             )
         )
 
+        self.extender.setDefaultCommand(
+            MoveArms(
+                self.extender,
+                lambda: self.xboxController.getLeftTriggerAxis(),
+                lambda: self.xboxController.getRightTriggerAxis()    
+            )
+        )
+
     def configureButtonBindings(self):
         commands2.button.JoystickButton(self.xboxController, 9).whenHeld(
             ReducedDrive(self.drive)
@@ -58,12 +67,14 @@ class RobotContainer:
             Grab(self.grabber)
         )
 
+        # left bumper
         commands2.button.JoystickButton(self.xboxController, 5).whenHeld(
-            Reach(self.extender, self.puller)
+            ForwardWheel(self.puller)
         )
 
+        # right bumper
         commands2.button.JoystickButton(self.xboxController, 6).whenHeld(
-            Pull(self.extender, self.puller)
+            BackwardWheel(self.puller)
         )
 
     def getAutonomousCommand(self) -> commands2.Command:
