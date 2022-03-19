@@ -19,4 +19,4 @@ class ManualDrive(commands2.CommandBase):
         self.addRequirements([self.drive])
 
     def execute(self) -> None:
-        self.drive.curvatureDrive(self.forward(), self.rotation())
+        self.drive.arcadeDrive(self.forward(), self.rotation())

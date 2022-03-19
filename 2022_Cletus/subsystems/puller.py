@@ -15,10 +15,12 @@ class PullerSubsystem(commands2.SubsystemBase):
         self.pullerMotors = wpilib.MotorControllerGroup(self.rightPullerMotor, self.leftPullerMotor)
 
     def contract(self) -> None:
-        self.pullerMotors.set(constants.pullPower)
+        pullPower = wpilib.Preferences.getFloat("pullPower")
+        self.pullerMotors.set(pullPower)
 
     def extend(self) -> None:
-        self.pullerMotors.set(-constants.pullPower)
+        pullPower = wpilib.Preferences.getFloat("pullPower")
+        self.pullerMotors.set(-pullPower)
 
     def stop(self) -> None:
         self.pullerMotors.set(0)

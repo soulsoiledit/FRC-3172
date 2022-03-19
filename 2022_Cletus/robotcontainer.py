@@ -6,7 +6,7 @@ import constants
 from subsystems.drive import DriveSubsystem
 from subsystems.grabber import GrabberSubsystem
 from subsystems.shooter import ShooterSubsystem
-from subsystems.extender import ExtenderSubsystem
+from subsystems.reacher import ReacherSubsystem
 from subsystems.puller import PullerSubsystem
 
 from commands.manualdrive import ManualDrive
@@ -17,6 +17,7 @@ from commands.shoot import NukeEm
 from commands.movearms import MoveArms
 from commands.movewheels import ForwardWheel
 from commands.movewheels import BackwardWheel
+from commands.auto import AutoDriveTime
 
 
 class RobotContainer:
@@ -28,8 +29,12 @@ class RobotContainer:
         self.drive = DriveSubsystem()
         self.shooter = ShooterSubsystem()
         self.grabber = GrabberSubsystem()
-        self.extender = ExtenderSubsystem()
+        self.extender = ReacherSubsystem()
         self.puller = PullerSubsystem()
+
+        self.autoSpeed = wpilib.Preferences.getFloat("autoSpeed")
+        self.autoTime = wpilib.Preferences.getFloat("autoTime")
+        self.autoDrive = AutoDriveTime(self.drive, self.autoSpeed, self.autoTime)
 
         self.configureButtonBindings()
 
@@ -55,14 +60,17 @@ class RobotContainer:
             ReducedDrive(self.drive)
         )
 
+        # A
         commands2.button.JoystickButton(self.xboxController, 1).whenHeld(
             MediumShoot(self.shooter)
         )
 
+        # B
         commands2.button.JoystickButton(self.xboxController, 2).whenHeld(
             NukeEm(self.shooter)
         )
 
+        # X
         commands2.button.JoystickButton(self.xboxController, 3).whenHeld(
             Grab(self.grabber)
         )
@@ -78,4 +86,4 @@ class RobotContainer:
         )
 
     def getAutonomousCommand(self) -> commands2.Command:
-        pass
+        return self.autoDrive

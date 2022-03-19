@@ -1,11 +1,11 @@
 import commands2
 import typing
-from subsystems.extender import ExtenderSubsystem
+from subsystems.reacher import ReacherSubsystem
 
 
 class MoveArms(commands2.CommandBase):
     def __init__(
-        self, extend: ExtenderSubsystem, 
+        self, extend: ReacherSubsystem, 
         leftSpeed:  typing.Callable[[], float], 
         rightSpeed:  typing.Callable[[], float]
     ) -> None:

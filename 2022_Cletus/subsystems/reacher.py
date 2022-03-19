@@ -14,4 +14,5 @@ class ReacherSubsystem(commands2.SubsystemBase):
         self.extendMotors = wpilib.MotorControllerGroup(self.leftReachMotor, self.rightReachMotor)
 
     def move(self, leftSpeed: float, rightSpeed: float) -> None:
-        self.extendMotors.set((leftSpeed-rightSpeed)*constants.reachPower)
+        reachPower = wpilib.Preferences.getFloat("reachPower")
+        self.extendMotors.set((leftSpeed-rightSpeed)*reachPower)

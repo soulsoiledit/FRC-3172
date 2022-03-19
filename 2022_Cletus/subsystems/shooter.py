@@ -16,7 +16,8 @@ class ShooterSubsystem(commands2.SubsystemBase):
         self.shooterMotors = wpilib.MotorControllerGroup(self.leftShooterMotor, self.rightShooterMotor)
 
     def shoot(self, force: float) -> None:
-        self.shooterMotors.set(force*constants.shootPower)
+        shootPower = wpilib.Preferences.getFloat("shootPower")
+        self.shooterMotors.set(force*shootPower)
 
     def stop(self) -> None:
         self.shooterMotors.set(0)

@@ -16,12 +16,14 @@ kGrabberPortID = 1
 kLeftShooterPortID = 2
 kRightShooterPortID = 3
 
-# Motor Power Constants
-driveFwdPower = 1
-driveRotPower = 0.8
-shootPower = 0.75
-grabPower = 0.5
-reachPower = 0.9
-pullPower = 1
-
 kXboxControllerPort = 0
+
+kDefDriveFwdPower = 1
+kDefDriveRotPower = 0.8
+kDefShootPower = 1
+kDefGrabPower = 0.5
+kDefReachPower = 1
+kDefPullPower = 1
+
+kDefAutoSpeed = -0.75
+kDefAutoTime = 5

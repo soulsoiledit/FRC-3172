@@ -12,7 +12,8 @@ class GrabberSubsystem(commands2.SubsystemBase):
         self.grabberMotor = rev.CANSparkMax(constants.kGrabberPortID, rev.CANSparkMaxLowLevel.MotorType(0))
 
     def grab(self) -> None:
-        self.grabberMotor.set(constants.grabPower)
+        grabPower = wpilib.Preferences.getFloat("grabPower")
+        self.grabberMotor.set(grabPower)
 
     def stop(self) -> None:
         self.grabberMotor.set(0)
