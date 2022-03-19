@@ -3,8 +3,7 @@ import wpilib
 import constants
 from subsystems.shooter import ShooterSubsystem
 
-
-class MediumShoot(commands2.CommandBase):
+class WeakShoot(commands2.CommandBase):
     def __init__(self, shooter: ShooterSubsystem) -> None:
         super().__init__()
         self.shooter = shooter
@@ -16,7 +15,7 @@ class MediumShoot(commands2.CommandBase):
     def end(self, interrupted: bool) -> None:
         self.shooter.stop()
 
-class NukeEm(commands2.CommandBase):
+class StrongShoot(commands2.CommandBase):
     def __init__(self, shooter: ShooterSubsystem) -> None:
         super().__init__()
         self.shooter = shooter
