@@ -11,6 +11,7 @@ simgui-ds.json
 simgui-window.json
 simgui.json
 2022_Cletus/.deploy_cfg
-2022_Cletus/subsystems/__pycache__/**
-2022_Cletus/commands/__pycache__/**
-2022_Cletus/__pycache__/**
+2022_Cletus/subsystems/__pycache__/*
+2022_Cletus/commands/__pycache__/*
+2022_Cletus/__pycache__/*
+2022_Cletus/commands/autonomous/__pycache__/*

@@ -1,6 +1,6 @@
 [NetworkTables Storage 3.0]
 string "/Preferences/.type"="RobotPreferences"
-double "/Preferences/autoSpeed"=30
+double "/Preferences/autoSpeed"=1
 double "/Preferences/autoTime"=5
 double "/Preferences/driveFwdPower"=0.8
 double "/Preferences/driveRotPower"=1

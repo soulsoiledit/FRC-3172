@@ -17,7 +17,7 @@ from commands.shoot import NukeEm
 from commands.movearms import MoveArms
 from commands.movewheels import ForwardWheel
 from commands.movewheels import BackwardWheel
-from commands.auto import AutoDriveTime
+from commands.autonomous.sequence import AutoSequence
 
 
 class RobotContainer:
@@ -34,7 +34,7 @@ class RobotContainer:
 
         self.autoSpeed = wpilib.Preferences.getFloat("autoSpeed")
         self.autoTime = wpilib.Preferences.getFloat("autoTime")
-        self.autoDrive = AutoDriveTime(self.drive, self.autoSpeed, self.autoTime)
+        self.autoDrive = AutoSequence(self.drive, self.shooter)
 
         self.configureButtonBindings()
 

@@ -25,5 +25,5 @@ kDefGrabPower = 0.5
 kDefReachPower = 1
 kDefPullPower = 1
 
-kDefAutoSpeed = -0.75
+kDefAutoSpeed = 1
 kDefAutoTime = 5

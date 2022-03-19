@@ -11,10 +11,6 @@ class MediumShoot(commands2.CommandBase):
         self.addRequirements(shooter)
 
     def initialize(self) -> None:
-        speed = -0.05
-        time = wpilib.Timer.get()
-        while (wpilib.Timer.get()-time) < 0.75 or speed == -0.5:
-            speed -= 0.005
         self.shooter.shoot(-0.5)
 
     def end(self, interrupted: bool) -> None:
@@ -27,10 +23,6 @@ class NukeEm(commands2.CommandBase):
         self.addRequirements(shooter)
 
     def initialize(self) -> None:
-        speed = -0.05
-        time = wpilib.Timer.get()
-        while (wpilib.Timer.get()-time) < 0.75 or speed == -0.5:
-            speed -= 0.005
         self.shooter.shoot(-1)
 
     def end(self, interrupted: bool) -> None:
