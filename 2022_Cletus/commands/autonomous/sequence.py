@@ -1,4 +1,5 @@
 import commands2
+import wpilib
 
 import constants
 
@@ -11,11 +12,11 @@ from subsystems.shooter import ShooterSubsystem
 
 class AutoSequence(commands2.ParallelCommandGroup):
 
-    def __init__(self, drive: DriveSubsystem, shooter: ShooterSubsystem):
+    def __init__(self, drive: DriveSubsystem, shooter: ShooterSubsystem, gyro: wpilib.ADXRS450_Gyro):
         super().__init__(
             commands2.SequentialCommandGroup(
-                AutoDriveBW(drive).withTimeout(4),
-                AutoDriveFW(drive).withTimeout(1)
+                AutoDriveBW(drive, gyro).withTimeout(4),
+                AutoDriveFW(drive, gyro).withTimeout(1)
             ),
 
             commands2.SequentialCommandGroup(
