@@ -32,13 +32,9 @@ class RobotContainer:
         self.extender = ReacherSubsystem()
         self.puller = PullerSubsystem()
 
-        self.gyro = wpilib.ADXRS450_Gyro()
-        self.gyro.reset()
-        self.gyro.calibrate()
-
         self.autoSpeed = wpilib.Preferences.getFloat("autoSpeed")
         self.autoTime = wpilib.Preferences.getFloat("autoTime")
-        self.autoSequence = AutoSequence(self.drive, self.shooter, self.gyro)
+        self.autoSequence = AutoSequence(self.drive, self.shooter)
 
         self.configureButtonBindings()
 

@@ -5,44 +5,33 @@ from subsystems.drive import DriveSubsystem
 
 
 class AutoDriveFW(commands2.CommandBase):
-    def __init__(self, drive: DriveSubsystem, gyro: wpilib.ADXRS450_Gyro) -> None:
+    def __init__(self, drive: DriveSubsystem) -> None:
         super().__init__()
         self.drive = drive
-        self.gyro = gyro
-        self.autoSpeed = 0
         self.addRequirements(drive)
-        
 
     def initialize(self) -> None:
-        self.autoSpeed = wpilib.Preferences.getFloat("autoSpeed")
-        self.drive.arcadeDrive(-self.autoSpeed*2, 0)
+        self.drive.gyro.reset()
+        self.drive.driveStraight(-wpilib.Preferences.getFloat("driveFwdPower")*1.1)
 
     def execute(self) -> None:
-        error = -self.gyro.getAngle()
-        turnPower = 0.5 * error
-
-        self.drive.arcadeDrive(-self.autoSpeed*2, turnPower)
+        self.drive.driveStraight(-wpilib.Preferences.getFloat("driveFwdPower")*1.1)
 
     def end(self, interrupted: bool) -> None:
-        self.drive.arcadeDrive(0, 0)
+        self.drive.driveStraight(0)
 
 class AutoDriveBW(commands2.CommandBase):
-    def __init__(self, drive: DriveSubsystem, gyro: wpilib.ADXRS450_Gyro) -> None:
+    def __init__(self, drive: DriveSubsystem) -> None:
         super().__init__()
         self.drive = drive
-        self.gyro = gyro
-        self.autoSpeed = 0
         self.addRequirements(drive)
 
     def initialize(self) -> None:
-        self.autoSpeed = wpilib.Preferences.getFloat("autoSpeed")
-        self.drive.arcadeDrive(self.autoSpeed, 0)
+        self.drive.gyro.reset()
+        self.drive.driveStraight(wpilib.Preferences.getFloat("autoSpeed"))
 
     def execute(self) -> None:
-        error = -self.gyro.getAngle()
-        turnPower = 0.5 * error
-
-        self.drive.arcadeDrive(self.autoSpeed, turnPower)
+        self.drive.driveStraight(wpilib.Preferences.getFloat("autoSpeed"))
 
     def end(self, interrupted: bool) -> None:
-        self.drive.arcadeDrive(0, 0)
+        self.drive.driveStraight(0)

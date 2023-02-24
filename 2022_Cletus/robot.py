@@ -12,6 +12,8 @@ class Cletus(commands2.TimedCommandRobot):
 
     def robotInit(self) -> None:
         self.container = RobotContainer()
+        self.time = wpilib.Timer()
+        self.time.start()
 
         if not wpilib.Preferences.containsKey("driveFwdPower"):
             wpilib.Preferences.setFloat("driveFwdPower", constants.kDefDriveRotPower)
@@ -48,7 +50,6 @@ class Cletus(commands2.TimedCommandRobot):
         self.autoCommand = self.container.getAutonomousCommand()
 
         if self.autoCommand:
-            print("gotAuto")
             self.autoCommand.schedule()
 
     def autonomousPeriodic(self) -> None:
@@ -56,10 +57,16 @@ class Cletus(commands2.TimedCommandRobot):
 
     def teleopInit(self) -> None:
         # if you want auto to continue until manual, remove this
+        self.time.start()
         if self.autoCommand:
             self.autoCommand.cancel()
 
     def teleopPeriodic(self) -> None:
+
+        print(str(round(self.time.get(), 1)) + " " + 
+            str(round(self.container.xboxController.getLeftY(), 2)) + " " +
+            str(self.container.xboxController.getBButton()) + "\n")
+            
         """This function is called periodically during operator control"""
 
     def testInit(self) -> None:

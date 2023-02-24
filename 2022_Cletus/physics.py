@@ -47,7 +47,7 @@ class PhysicsEngine:
         r_motor = self.r_motor.getSpeed()
 
         voltage = wpilib.RobotController.getInputVoltage()
-        self.drivesim.setInputs(l_motor * voltage, r_motor * voltage)
+        self.drivesim.setInputs(r_motor * voltage, l_motor * voltage)
         self.drivesim.update(tm_diff)
 
         self.physics_controller.field.setRobotPose(self.drivesim.getPose())

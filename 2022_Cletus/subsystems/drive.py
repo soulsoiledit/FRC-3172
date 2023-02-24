@@ -20,10 +20,17 @@ class DriveSubsystem(commands2.SubsystemBase):
 
         self.drive = wpilib.drive.DifferentialDrive(self.right_drive, self.left_drive)
 
+        self.gyro = wpilib.ADXRS450_Gyro()
+        self.gyro.reset()
+        self.gyro.calibrate()
+
     def arcadeDrive(self, fwd: float, rot: float) -> None:
         driveFwdPower = wpilib.Preferences.getFloat("driveFwdPower")
         driveRotPower = wpilib.Preferences.getFloat("driveRotPower")
         self.drive.arcadeDrive(fwd*driveFwdPower, rot*driveRotPower)
+
+    def driveStraight(self, fwd: float) -> None:
+        self.drive.arcadeDrive(fwd, -self.gyro.getAngle()/8)
 
     def setMaxOutput(self, maxOutput: float):
         self.drive.setMaxOutput(maxOutput)
